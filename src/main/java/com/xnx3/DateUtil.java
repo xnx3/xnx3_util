@@ -47,7 +47,7 @@ public class DateUtil {
 	}
 	
 	/**
-	 * 将Linux时间戳变为文字描述的时间
+	 * 日期格式化，将Linux时间戳变为文字描述的时间
 	 * @param linuxTime Linux时间戳，10位或者13位
 	 * @param format 转换格式 ,若不填，默认为yyyy-MM-dd hh:mm:ss {@link #FORMAT_DEFAULT}
 	 * @return 转换后的日期。如 2016-01-18 11:11:11
@@ -81,7 +81,7 @@ public class DateUtil {
 	}
 	
 	/**
-	 * 获取当前时间
+	 * 获取当前时间，返回人看的时间，如 yyyy-MM-dd HH:mm:ss
 	 * @param format 生成的格式化时间，如 yyyy-MM-dd HH:mm:ss
 	 * @return 当前的格式化好的时间
 	 */
@@ -167,7 +167,7 @@ public class DateUtil {
 	}
 	
 	/**
-	 * {@link Date}转为String类型，变成当前显示的文字时间
+	 * {@link Date}转为String类型，变成当前显示的文字时间，如 2016-03-19 00:00:00
 	 * @param date {@link java.util.Date}
 	 * @param format 生成的格式化时间，如 yyyy-MM-dd HH:mm:ss
 	 * @return 文字时间
