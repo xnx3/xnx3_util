@@ -309,8 +309,8 @@ public class FileUtil {
 	 * 			<li>若返回具体字符串，则出现了异常，被try捕获到了，返回e.getMessage()异常信息
 	 * @throws IOException 
 	 */
-	public static void downFiles(String downUrl,String savePath) throws IOException{
-		downFiles(downUrl, savePath, null);
+	public static void downFile(String downUrl,String savePath) throws IOException{
+		downFile(downUrl, savePath, null);
 	}
 	
 
@@ -330,9 +330,9 @@ public class FileUtil {
 	 * 			<li>若返回具体字符串，则出现了异常，被try捕获到了，返回e.getMessage()异常信息
 	 * @throws IOException 
 	 */
-	public static void downFiles(String downUrl,String savePath, Map<String, String> param) throws IOException{
+	public static void downFile(String downUrl,String savePath, Map<String, String> param) throws IOException{
 		//默认超时是30秒
-		downFiles(downUrl, savePath, param, 30000);
+		downFile(downUrl, savePath, param, 30000);
 	}
 	
 	/**
@@ -352,7 +352,7 @@ public class FileUtil {
 	 * 			<li>若返回具体字符串，则出现了异常，被try捕获到了，返回e.getMessage()异常信息
 	 * @throws IOException 
 	 */
-	public static void downFiles(String downUrl,String savePath, Map<String, String> param, int timeout) throws IOException{
+	public static void downFile(String downUrl,String savePath, Map<String, String> param, int timeout) throws IOException{
 		//判断文件是否已存在，若存在，则先删除
 		if(exists(savePath)){
 			FileUtil.deleteFile(savePath);
@@ -452,35 +452,11 @@ public class FileUtil {
 	}
 	
 	/**
-	 * 从互联网下载文件
-	 * <li>建议使用 {@link #downFiles(String, String)}
-	 * <li>下载过程会阻塞当前线程
-	 * <li>若文件存在，会先删除存在的文件，再下载
-	 * @param downUrl 下载的目标文件网址 如 "http://www.xnx3.com/down/java/j2se_util.zip"
-	 * @param savePath 下载的文件保存路径。如 "C:\\test\\j2se_util.zip"
-	 * @return 返回下载出现的异常
-	 * 			<li>若返回null，则为下载成功，下载完毕，没有出现异常
-	 * 			<li>若返回具体字符串，则出现了异常，被try捕获到了，返回e.getMessage()异常信息
-	 */
-	@Deprecated
-	public static String downFile(String downUrl,String savePath){
-		String result = null;
-		try {
-			new FileUtil().downFiles(downUrl, savePath);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			result = e.getMessage();
-		}
-		return result;
-	}
-	
-	/**
 	 * 将 {@link BufferedReader} 转换为 {@link String}
 	 * @param br {@link BufferedReader}
 	 * @return String 若失败，返回 ""
 	 */
-	public static String BufferedReaderToString(BufferedReader br) {
+	public static String bufferedReaderToString(BufferedReader br) {
 		String inputLine;
 		String str = "";
 		try {
@@ -529,7 +505,5 @@ public class FileUtil {
 		return cal.getTime();  
 	}
 	
-    public static void main(String[] args) throws IOException {
-		downFiles("http://conference.cioe.cn/skin/gaofeng/js/js.js?version=2018/6/1%2020:20:17", "/images/js/a.js");
-	}
+   
 }
