@@ -4,7 +4,7 @@ A collection of common Java tools
 # explain
 
 
-<details>
+<details open>
 <summary>com.xnx3.DateUtil	时间日期相关</summary>
 
 - timeForUnix13()	返回当前13位的Unix时间戳
@@ -25,7 +25,7 @@ A collection of common Java tools
 
 </details>
 
-<details>
+<details open>
 <summary>com.xnx3.FileUtil 文件</summary>
 
 - read()	读文件，返回字符串
