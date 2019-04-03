@@ -2,9 +2,10 @@
 A collection of common Java tools
 
 # explain
-[top]
 
-##### com.xnx3.DateUtil	时间日期相关
+
+<details>
+<summary>com.xnx3.DateUtil	时间日期相关</summary>
 - timeForUnix13()	返回当前13位的Unix时间戳
 - timeForUnix10()	返回当前10位数的Unix时间戳
 - intToString()	将Linux时间戳变为文字描述的时间
@@ -20,6 +21,8 @@ A collection of common Java tools
 - currentWeek()	获取当前是星期几,返回值从星期日开始
 - getDateZeroTime()	传入一个10位的时间戳，返回当前时间戳所在的当天0点的10位时间戳
 - getWeekForTime()	判断指定的日期是星期几
+
+</details>
 
 ##### com.xnx3.FileUtil 文件
 - read()	读文件，返回字符串
