@@ -7,10 +7,10 @@ A collection of common Java tools
 <details>
 <summary>com.xnx3.DateUtil	时间日期相关</summary>
 
-* timeForUnix13()	返回当前13位的Unix时间戳
-* timeForUnix10()	返回当前10位数的Unix时间戳
-* intToString()	将Linux时间戳变为文字描述的时间
-* dateFormat()	日期格式化，将Linux时间戳变为文字描述的时间
+- timeForUnix13()	返回当前13位的Unix时间戳
+- timeForUnix10()	返回当前10位数的Unix时间戳
+- intToString()	将Linux时间戳变为文字描述的时间
+- dateFormat()	日期格式化，将Linux时间戳变为文字描述的时间
 - currentDate()	获取当前时间，返回人看的时间，如 2016-03-19 00:00:00
 - StringToDate()	将String类型时间转换为Date对象
 - StringToInt()	将String类型时间转换为10位的linux时间戳
@@ -25,7 +25,9 @@ A collection of common Java tools
 
 </details>
 
-##### com.xnx3.FileUtil 文件
+<details>
+<summary>com.xnx3.FileUtil 文件</summary>
+
 - read()	读文件，返回字符串
 - write()	写文件
 - inputStreamToFile()	InputStream转为文件并保存，为jar包内的资源导出而写
@@ -38,11 +40,43 @@ A collection of common Java tools
 - inputstreamToByte()	将 InputStream 转化为 byte[]
 - getCreateTime()	输入文件路径，返回这个文件的创建时间
 
-##### com.xnx3.StringUtil 字符串
-##### com.xnx3.IntegerUtil	整型、数字
-##### com.xnx3.MD5Util	MD5加密
-##### com.xnx3.SystemUtil 操作系统 
-##### com.xnx3.UrlUtil	网址
-##### com.xnx3.ZipUtil	zip压缩包相关
-##### com.xnx3.DelayCycleEcecuteUtil	延迟多次执行，直到执行成功
-	
+</details>
+
+<details>
+<summary>com.xnx3.FileUtil 文件</summary>
+
+</details>
+
+<details>
+<summary>com.xnx3.StringUtil 字符串</summary>
+
+</details>
+
+<details>
+<summary>com.xnx3.IntegerUtil	整型、数字</summary>
+
+</details>
+
+<details>
+<summary>com.xnx3.MD5Util	MD5加密</summary>
+
+</details>
+
+<details>
+<summary>com.xnx3.SystemUtil 操作系统 </summary>
+
+</details>
+
+<details>
+<summary>com.xnx3.UrlUtil	网址</summary>
+
+</details>
+
+<details>
+<summary>com.xnx3.ZipUtil	zip压缩包相关</summary>
+
+</details>
+
+<summary>com.xnx3.DelayCycleEcecuteUtil	延迟多次执行，直到执行成功</summary>
+
+</details>
