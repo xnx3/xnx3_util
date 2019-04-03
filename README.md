@@ -6,10 +6,10 @@ A collection of common Java tools
 
 <details>
 <summary>com.xnx3.DateUtil	时间日期相关</summary>
-- timeForUnix13()	返回当前13位的Unix时间戳
-- timeForUnix10()	返回当前10位数的Unix时间戳
-- intToString()	将Linux时间戳变为文字描述的时间
-- dateFormat()	日期格式化，将Linux时间戳变为文字描述的时间
+* timeForUnix13()	返回当前13位的Unix时间戳
+* timeForUnix10()	返回当前10位数的Unix时间戳
+* intToString()	将Linux时间戳变为文字描述的时间
+* dateFormat()	日期格式化，将Linux时间戳变为文字描述的时间
 - currentDate()	获取当前时间，返回人看的时间，如 2016-03-19 00:00:00
 - StringToDate()	将String类型时间转换为Date对象
 - StringToInt()	将String类型时间转换为10位的linux时间戳
