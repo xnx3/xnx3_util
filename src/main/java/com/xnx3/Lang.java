@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  * 常用方法集合
  * @author 管雷鸣
  */
+@SuppressWarnings("unchecked")
 public class Lang {
 	/**
 	 * 当前版本号
