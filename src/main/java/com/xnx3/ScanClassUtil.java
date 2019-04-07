@@ -36,7 +36,7 @@ public class ScanClassUtil {
 	/**
 	 * 从 指定的一堆 {@link Class} 中，找出某个接口的实现类，放入 List 返回。只要类中有过实现这个接口，便将这个类返回
 	 * @param classList 要找的一堆 {@link Class}
-	 * @param interfaceName 如：com.xnx3.wangmarket.weixin.interfaces.AutoReply
+	 * @param interfaceName 搜索实现的接口，如：com.xnx3.wangmarket.weixin.interfaces.AutoReply
 	 * @return 将有此接口实现的类用 List 返回
 	 */
 	public static List<Class<?>> searchByInterfaceName(List<Class<?>> classList, String interfaceName){
@@ -82,42 +82,6 @@ public class ScanClassUtil {
 		return list;
 	}
 	
-	/**
-	 * <pre>
-	 * // 某类或者接口的子类
-     *  List&lt;Class &lt?&gt;&gt; inInterface = getByInterface(Object.class, classList);
-     *  System.out.println("int-->"+inInterface.size() + "");
-	 * </pre>
-	 * @param clazz
-	 * @param classesAll
-	 * @return
-	 * @deprecated
-	 */
-    public static List<Class<?>> getByInterface(Class clazz, List<Class<?>> classesAll) {
-        List<Class<?>> classList = new ArrayList<Class<?>>();
-        // 获取指定接口的实现类
-        if (!clazz.isInterface()) {
-            try {
-                /**
-                 * 循环判断路径下的所有类是否继承了指定类 并且排除父类自己
-                 */
-                Iterator<Class<?>> iterator = classesAll.iterator();
-                while (iterator.hasNext()) {
-                    Class<?> cls = iterator.next();
-                    if (clazz.isAssignableFrom(cls)) {
-                        if (!clazz.equals(cls)) {
-                        	classList.add(cls);
-                        }
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return classList;
-    }
-
-
     /**
      * 从包package中获取所有的Class。如：
      *	<pre>
