@@ -5,7 +5,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.xnx3.util</groupId>
-	<artifactId>com.xnx3.util</artifactId>
+	<artifactId>xnx3-util</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
 
