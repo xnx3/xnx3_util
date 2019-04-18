@@ -5,10 +5,8 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  * 
- * MD5工具类. <br>
- * 
+ * MD5工具类. 
  * @author 宋立君
- * @date 2014年06月24日
  */
 public class MD5Util {
 
@@ -27,14 +25,14 @@ public class MD5Util {
 		}
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(MD5("test"));
-	}
+//	public static void main(String[] args) {
+//		System.out.println(MD5("test"));
+//	}
 
 	/**
 	 * 将字符串MD5加密
 	 * @param str 要进行加密的字符串
-	 * @return
+	 * @return 加密后的字符串
 	 */
 	public static String MD5(String str) {
 		return bytesToMD5(str.getBytes());

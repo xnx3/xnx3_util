@@ -14,8 +14,8 @@ public class LanUtil {
 	 * @param ip (192.168.0.101)
 	 * @return boolean 
 	 * 				<ul>
-	 * 					<li>true:可以访问
-	 * 				    <li>false:访问不通
+	 * 					<li>true:可以访问</li>
+	 * 				    <li>false:访问不通</li>
 	 * 				</ul>
 	 */
 	public boolean isUsedIPAddress(String ip) {                            

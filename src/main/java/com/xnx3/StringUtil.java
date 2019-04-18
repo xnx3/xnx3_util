@@ -217,7 +217,7 @@ public class StringUtil {
 	
 	/**
 	 * 字符串转UTF8编码(16进制如\u7ba1\u96f7\u9e23)
-	 * <br/>建议使用 StringToUtf8
+	 * <p>建议使用 StringToUtf8</p>
 	 * @param text 要转成utf8的文字
 	 * @return 16进制编码，如\u7ba1\u96f7\u9e23
 	 * @deprecated
@@ -276,9 +276,11 @@ public class StringUtil {
 	/**
 	 * 获取制定的utf-8文字编码是哪国什么语言，中文、英语、阿拉伯语、.....
 	 * @param text 要检测的UTF8编码，可传入：
-	 * 				<li>16进制字符串，如 "\u7ba1"
-	 * 				<li>单个字符,如 "管"
-	 *				<li>16进制编码,如 "7ba1"
+	 * 			<ul>
+	 * 				<li>16进制字符串，如 "\u7ba1"</li>
+	 * 				<li>单个字符,如 "管"</li>
+	 *				<li>16进制编码,如 "7ba1"</li>
+	 *			</ul>
 	 * @return 哪国语言，若是返回null，则出错失败
 	 */
 	public static String getStringLanguage(String text){
@@ -354,13 +356,14 @@ public class StringUtil {
 	
 	/**
 	 * 再字符串的某个位置，插入一个新的字符串
-	 * <br/>比如原始字符串为 abcd ，在位置1插入，插入一个@符，则会变为 a@bcd
+	 * <p>比如原始字符串为 abcd ，在位置1插入，插入一个@符，则会变为 a@bcd</p>
 	 * @param sourceString 原始字符串，要将插入的字符串插入到这里
 	 * @param insertString 要插入的字符串。若为null或者空字符穿""，则不做任何改动sourceString原样返回
 	 * @param place 要插入的字符串，要插入到原始字符串sourceString的位置，其之前有多少个字符，使用indexOf所获得
 	 * 				<ul>
 	 * 					<li>若传入 -1 ，则不做任何改动sourceString原样返回</li>
 	 * 				</ul>
+	 * @return 新的字符串
 	 */
 	public static String insert(String sourceString, String insertString, int place){
 		if(insertString == null || insertString.length() == 0 || place == -1){
@@ -376,7 +379,7 @@ public class StringUtil {
 
 	/**
 	 * 对一个原始字符串内，指定两个字符串中间的区域文字进行替换操作，将中间的这段文字替换为另一段
-	 * <br/>如:要将字符串1234567890内的3456789替换为abc，最终得到字符串12abc0,则这样写
+	 * <p>如:要将字符串1234567890内的3456789替换为abc，最终得到字符串12abc0,则这样写</p>
 	 * <pre>subStringReplace("1234567890","34","789","abc");</pre>
 	 * @param text 原始字符串
 	 * @param startString 要替换的这段区域的文字的开始字符串，替换后会包含这段一块被替换
@@ -524,7 +527,7 @@ public class StringUtil {
 	 * @param in 要转化的 输入流 {@link InputStream}
 	 * @param encode 编码，如 UTF-8
 	 * @return 转换好的String字符串
-	 * @throws IOException
+	 * @throws IOException 异常
 	 */
 	public static String inputStreamToString(InputStream in, String encode) throws IOException{
 		if(in == null){
@@ -546,7 +549,7 @@ public class StringUtil {
 	 * @param text 要转换的字符串
 	 * @param encode 编码，如UTF-8
 	 * @return 转换好的输入流
-	 * @throws UnsupportedEncodingException
+	 * @throws UnsupportedEncodingException 异常
 	 */
 	public static InputStream stringToInputStream(String text, String encode) throws UnsupportedEncodingException{
 		if(text == null){
@@ -558,7 +561,7 @@ public class StringUtil {
 
 	/**
 	 * 将当前字符串内的空格、换行、tab缩进等空白符号移除
-	 * <br/>若传入null，会原样返回
+	 * <p>若传入null，会原样返回</p>
 	 * @param str 要移除空白符号的字符串
 	 * @return 移除空白字符后的字符串
 	 */
@@ -642,10 +645,11 @@ public class StringUtil {
 
 	/**
 	 * 字符串中
-	 * <br/>1.首先，若首字母是大写，则转小写
-	 * <br/>2.然后将字符串中出现的大写字母转为下划线加小写
-	 * <br/>（相当于JPA实体类，会自动将数据表的名字转换成数据库名一般）
+	 * <p>1.首先，若首字母是大写，则转小写</p>
+	 * <p>2.然后将字符串中出现的大写字母转为下划线加小写</p>
+	 * <p>（相当于JPA实体类，会自动将数据表的名字转换成数据库名一般）</p>
 	 * @param s 要转换的字符串
+	 * @return 转换好的字符串
 	 */
 	public static String firstCharToLowerCase(String s){
 		if(s==null || s.equals("")){    
@@ -793,7 +797,7 @@ public class StringUtil {
 
 	
 	/**
-	 * 过滤英文特殊字符 `~!@#$%^&*()+=|{}':;',\\[\\].<>/?~
+	 * 过滤英文特殊字符，如叹号、百分号、星号、叹号、逗号、句号、引号等等等等
 	 * @param text 要过滤得原始字符串
 	 * @return 过滤完后得字符串
 	 */
@@ -808,7 +812,7 @@ public class StringUtil {
 	}
 	
 	/**
-	 * 过滤中文特殊字符 ！@#￥%……&*（）——+|{}【】‘；：”“’。，、？
+	 * 过滤中文特殊字符，如叹号、百分号、星号、叹号、逗号、句号、引号等等等等
 	 * @param text 要过滤得原始字符串
 	 * @return 过滤完后得字符串
 	 */
@@ -850,16 +854,22 @@ public class StringUtil {
 	 * 从给定的字符串中截取想要的指定字符
 	 * @param sourceString 源字符串，要切割的字符串
 	 * @param startString 匹配的开始点字符
-	 * 				<li>若为null或者""表示从头开始匹配
-	 * 				<li>若是没找到开始点字符串，默认为从最开始匹配
+	 * 			<ul>
+	 * 				<li>若为null或者""表示从头开始匹配</li>
+	 * 				<li>若是没找到开始点字符串，默认为从最开始匹配</li>
+	 *			</ul>
 	 * @param endString 匹配的结束点字符
-	 * 				<li>若为null或者""表示匹配到末尾
-	 * 				<li>若是没找到结束点字符串，默认为匹配到最末尾
+	 * 			<ul>
+	 * 				<li>若为null或者""表示匹配到末尾</li>
+	 * 				<li>若是没找到结束点字符串，默认为匹配到最末尾</li>
+	 *			</ul>
 	 * @param matchType 此项是针对结尾的匹配,可传入：
-	 * 				<li>1:开始匹配找到的第一个，结束匹配找到的最后一个。
-	 * 				<li>2:开始匹配找到的第一个，结束匹配：找到的开始位置往后的第一个。
-	 * 				<li>3.开始匹配找到的最后一个，结束匹配找到的最后一个。
-	 * 				<li>4:开始匹配找到的最后一个，结束匹配：找到的开始位置往后的第一个。
+	 * 				<ul>
+	 * 					<li>1:开始匹配找到的第一个，结束匹配找到的最后一个。</li>
+	 * 					<li>2:开始匹配找到的第一个，结束匹配：找到的开始位置往后的第一个。</li>
+	 * 					<li>3.开始匹配找到的最后一个，结束匹配找到的最后一个。</li>
+	 * 					<li>4:开始匹配找到的最后一个，结束匹配：找到的开始位置往后的第一个。</li>
+	 * 				</ul>
 	 * @return 截取的字符串,若是传入了但是没找到开始或者结束字符则返回null
 	 */
 	public static String subString(String sourceString,String startString,String endString,int matchType){
@@ -918,14 +928,18 @@ public class StringUtil {
 
 	/**
 	 * 从给定的字符串中截取想要的指定字符。
-	 * 		<li>注意：开始跟结束的两个字符串必须是这段字符中是唯一存在的(此为匹配开始字符串第一个到结束字符串最后一个)
+	 * 		<p>注意：开始跟结束的两个字符串必须是这段字符中是唯一存在的(此为匹配开始字符串第一个到结束字符串最后一个)</p>
 	 * @param sourceString 源字符串，要切割的字符串
 	 * @param startString 匹配的开始点字符
-	 * 				<li>若为null或者""表示从头开始匹配
-	 * 				<li>若是没找到开始点字符串，默认为从最开始匹配
+	 * 			<ul>
+	 * 				<li>若为null或者""表示从头开始匹配</li>
+	 * 				<li>若是没找到开始点字符串，默认为从最开始匹配</li>
+	 * 			</ul>
 	 * @param endString 匹配的结束点字符
-	 * 				<li>若为null或者""表示匹配到末尾
-	 * 				<li>若是没找到结束点字符串，默认为匹配到最末尾
+	 * 			<ul>
+	 * 				<li>若为null或者""表示匹配到末尾</li>
+	 * 				<li>若是没找到结束点字符串，默认为匹配到最末尾</li>
+	 * 			</ul>
 	 * @see Lang#subString(String, String, String, int)
 	 * @return 截取的字符串,若是传入了但是没找到开始或者结束字符则返回null
 	 */

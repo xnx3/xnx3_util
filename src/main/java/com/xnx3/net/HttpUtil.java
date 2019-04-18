@@ -26,12 +26,11 @@ public class HttpUtil {
     private String cookies="";	//每次请求都用自动发送此cookies,请求完毕后自动更新此cookies
     private int timeout = 30000;	//超时时间，默认30秒
     
-    public static void main(String[] args) {
-    	HttpUtil http = new HttpUtil(HttpUtil.UTF8);
-		HttpResponse hr = http.get("http://cloud.wscso.com/templatelist");
-		System.out.println(hr.toString());
-		
-	}
+//    public static void main(String[] args) {
+//    	HttpUtil http = new HttpUtil(HttpUtil.UTF8);
+//		HttpResponse hr = http.get("http://cloud.wscso.com/templatelist");
+//		System.out.println(hr.toString());
+//	}
     
     /**
      * 设置超时时间
@@ -54,7 +53,7 @@ public class HttpUtil {
     
     /**
      * 设置好编码类型，若不设置则默认是Java虚拟机当前的文件编码
-     * @param encode 使用时首先会自动获取请求地址的编码，获取编码失败时才会使用此处的编码<br/> {@link HttpUtil#UTF8} {@link HttpUtil#GBK}
+     * @param encode 使用时首先会自动获取请求地址的编码，获取编码失败时才会使用此处的编码<p> {@link HttpUtil#UTF8} {@link HttpUtil#GBK}
      */
     public HttpUtil(String encode) { 
         this.encode = encode; 
@@ -70,7 +69,7 @@ public class HttpUtil {
     
     /**
      * 获取上次请求完成后获得的Cookies
-     * @return cookies
+     * @return cookies 获得到的cookies
      */
     public String getCookies() {
 		return cookies;
@@ -103,7 +102,6 @@ public class HttpUtil {
      * @param urlString  URL地址
      * @param params 参数集合
      * @return 响应对象
-     * @throws IOException
      */ 
     public HttpResponse get(String urlString, Map<String, String> params){ 
         try {
@@ -121,7 +119,6 @@ public class HttpUtil {
      * @param params 参数集合
      * @param propertys 请求属性
      * @return 响应对象
-     * @throws IOException
      */ 
     public HttpResponse get(String urlString, Map<String, String> params, Map<String, String> propertys){ 
         try {
@@ -137,7 +134,6 @@ public class HttpUtil {
      * POST请求
      * @param urlString URL地址
      * @return 响应对象
-     * @throws IOException
      */ 
     public HttpResponse post(String urlString) { 
         try {
@@ -154,7 +150,6 @@ public class HttpUtil {
      * @param urlString URL地址
      * @param params 参数集合
      * @return 响应对象
-     * @throws IOException
      */ 
     public HttpResponse post(String urlString, Map<String, String> params) { 
         try {
@@ -172,7 +167,6 @@ public class HttpUtil {
      * @param params 参数集合
      * @param propertys 请求属性,headers
      * @return 响应对象
-     * @throws IOException
      */ 
     public HttpResponse post(String urlString, Map<String, String> params, Map<String, String> propertys){ 
         try {
@@ -187,7 +181,7 @@ public class HttpUtil {
 	/**
 	 * 将Map转换为URL的请求GET参数
 	 * @param url URL路径，如：http://www.xnx3.com/test.php
-	 * @param parameters	请求参数Map集合
+	 * @param parameters 请求参数Map集合
 	 * @return 完整的GET方式网址
 	 */
 	public static String mapToUrl(String url,Map<String, String> parameters){
@@ -212,9 +206,9 @@ public class HttpUtil {
 	}
 	
 	/**
-	 * 将Map参数转变为 URL后的字符组合形势 
+	 * 将Map参数转变为 URL后的字符组合形势。
 	 * @param parameters Map 
-	 * @return key=value&key=value
+	 * @return 返回url拼接的key、value，返回如： key=value&amp;key=value
 	 */
 	public static String mapToQueryString(Map<String,String> parameters){
     	String data = "";
@@ -242,7 +236,7 @@ public class HttpUtil {
      * @param parameters  添加由键值对指定的请求参数
      * @param propertys  添加由键值对指定的一般请求属性,headers
      * @return 响应对象
-     * @throws IOException
+     * @throws IOException IO异常
      */ 
     private HttpResponse send(String urlString, String method, Map<String, String> parameters, 
             Map<String, String> propertys) throws IOException { 
@@ -319,9 +313,9 @@ public class HttpUtil {
     
     /**
      * 得到响应对象
-     * @param urlConnection
+     * @param urlConnection {@link HttpURLConnection}
      * @return 响应对象
-     * @throws IOException
+     * @throws IOException IO异常
      */ 
     private HttpResponse makeContent(String urlString, HttpURLConnection urlConnection) throws IOException { 
     	urlConnection.setConnectTimeout(this.timeout);

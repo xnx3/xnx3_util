@@ -9,12 +9,12 @@ import java.awt.Color;
  */
 public class ColorUtil {
 	
-    public static void main(String[] args) {
-    	System.out.println(hexToInt("F1F1F1"));
-		System.out.println(intToHex(-921103));
-		System.out.println(intToColor(-921102));
-		System.out.println(colorToHex(new Color(340)));
-	}
+//    public static void main(String[] args) {
+//    	System.out.println(hexToInt("F1F1F1"));
+//		System.out.println(intToHex(-921103));
+//		System.out.println(intToColor(-921102));
+//		System.out.println(colorToHex(new Color(340)));
+//	}
 	
     /**
      * {@link Color}转换为十六进制颜色
@@ -104,7 +104,7 @@ public class ColorUtil {
 	/**
 	 * 将颜色值int型转换为RGB类型，三原色数值单独分开
 	 * @param value 十进制的图像颜色，FFFFFF颜色转成10进制便是这个传入值
-	 * @return {@link RGBBean}
+	 * @return {@link Color}
 	 */
 	public static Color intToColor(int value){
 		Color color = new Color(value);

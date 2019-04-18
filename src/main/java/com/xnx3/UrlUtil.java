@@ -10,6 +10,7 @@ public class UrlUtil {
 	 * 替换掉路径的层级，即替换掉前缀的../  、  ./  、 /
 	 * @param path 绝对路径前缀，如 http://www.wang.market/a/
 	 * @param originalUrl 具体文件，如 ../js/func.js
+	 * @return 替换好的字符串
 	 */
 	public static String hierarchyReplace(String path, String originalUrl){
 		if(isAbsoluteUrl(originalUrl)){

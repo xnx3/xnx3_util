@@ -51,7 +51,7 @@ public class DateUtil {
 	 * @param linuxTime Linux时间戳，10位或者13位
 	 * @param format 转换格式 ,若不填，默认为yyyy-MM-dd hh:mm:ss {@link #FORMAT_DEFAULT}
 	 * @return 转换后的日期。如 2016-01-18 11:11:11
-	 * @throws NotReturnValueException
+	 * @throws NotReturnValueException 异常
 	 */
 	public static String dateFormat(long linuxTime,String format) throws NotReturnValueException{
 		int linuxTimeLength=(linuxTime+"").length();
@@ -74,7 +74,7 @@ public class DateUtil {
 	 * {@link #dateFormat(long, String)}
 	 * @param linuxTime Linux时间戳，10位或者13位
 	 * @return 转换后的日期。如 2016-01-18 11:11:11
-	 * @throws NotReturnValueException
+	 * @throws NotReturnValueException 异常
 	 */
 	public String dateFormat(long linuxTime) throws NotReturnValueException{
 		return dateFormat(linuxTime, FORMAT_DEFAULT);
@@ -123,7 +123,6 @@ public class DateUtil {
 	 * @param time 要转换的时间，如2016-02-18 00:00:11
 	 * @param format 要转换的String的时间格式，如：yyyy-MM-dd HH:mm:ss
 	 * @return 10位Linux时间戳
-	 * @throws ParseException 
 	 */
 	public static int StringToInt(String time , String format){
 		long d = StringToDate(time, format).getTime();
@@ -156,8 +155,8 @@ public class DateUtil {
 	
 	/**
 	 * 获取当前传入时间的当天午夜时间，如 2016-03-19 23:59:59
-	 * @param {@link java.util.Date}
-	 * @return {@link java.util.Date}
+	 * @param date 传入的时间{@link java.util.Date}
+	 * @return 传入时间当前的午夜时间{@link java.util.Date}
 	 */
 	public static Date midnight(Date date){
 		Calendar cal = Calendar.getInstance();
@@ -233,7 +232,7 @@ public class DateUtil {
 
 	/**
 	 * 判断指定的日期是星期几
-	 * @param stringTime 日期，传入如： 2019-8-18
+	 * @param pTime 日期，传入如： 2019-8-18
 	 * @return 返回值 int 0～7： 
 	 * 			<ul>
 	 * 				<li>0:失败</li>

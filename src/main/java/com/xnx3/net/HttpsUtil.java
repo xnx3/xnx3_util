@@ -34,7 +34,7 @@ public class HttpsUtil {
 
     /**
      * 设置好编码类型，若不设置则默认是Java虚拟机当前的文件编码
-     * @param encode 使用时首先会自动获取请求地址的编码，获取编码失败时才会使用此处的编码<br/> {@link HttpUtil#UTF8} {@link HttpUtil#GBK}
+     * @param encode 使用时首先会自动获取请求地址的编码，获取编码失败时才会使用此处的编码<p> {@link HttpUtil#UTF8} {@link HttpUtil#GBK}</p>
      */
     public HttpsUtil(String encode) { 
         this.encode = encode; 
@@ -110,7 +110,7 @@ public class HttpsUtil {
     /**
      * POST方式获取网页源代码
      * @param url 请求url
-     * @param parameters 传递参数集合，会解析为 "key=value&key=value"
+     * @param parameters 传递参数集合
      * @param headers header头
      * @return {@link HttpResponse}
      */
@@ -127,7 +127,7 @@ public class HttpsUtil {
     /**
      * POST获取网页源代码
      * @param url 请求url
-     * @param parameters 传递参数集合，会解析为 "key=value&key=value"
+     * @param parameters 传递参数集合，会解析为 key=value&amp;key=value
      * @return {@link HttpResponse}
      */
     public HttpResponse post(String url,Map<String, String> parameters){
@@ -144,10 +144,10 @@ public class HttpsUtil {
     /**
      * 获取网页源代码
      * @param url 请求的url
-     * @param post POST要提交的数据。可为null，为不提交数据。若有POST数据，格式可为 "a=1&b=2"
+     * @param post POST要提交的数据。可为null，为不提交数据。
      * @param headers header头
      * @return {@link HttpResponse}
-     * @throws Exception
+     * @throws Exception 异常
      */
     public HttpResponse send(String url,String post,Map<String, String> headers) throws Exception {
         SSLContext sc = SSLContext.getInstance("SSL");

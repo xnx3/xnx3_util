@@ -59,7 +59,7 @@ public class ScanClassUtil {
 	 * 从 指定的一堆 {@link Class} 中，找出类上有某个指定注解的类，放入 List 返回。
 	 * <pre>
 	 * //使用如:
-	 * List&lt;Class &lt?&gt;&gt; c = getClassSearchAnnotationsName(classList, "PluginRegister");
+	 * List&lt;Class &lt;?&gt;&gt; c = getClassSearchAnnotationsName(classList, "PluginRegister");
 	 * </pre>
 	 * @param classList 要找的一堆 {@link Class}
 	 * @param annotationClassSimpleName 注解的类的名字，如注解类为：<p> public @interface PluginRegister {} </p> ，则此处传入: PluginRegister ，不含包及路径，纯脆名字
@@ -85,7 +85,7 @@ public class ScanClassUtil {
     /**
      * 从包package中获取所有的Class。如：
      *	<pre>
-     *		List&lt;Class &lt?&gt;&gt; classList = getClasses("com.xnx3");
+     *		List&lt;Class &lt;?&gt;&gt; classList = getClasses("com.xnx3");
      *	</pre>
      * @param pack 要搜索的包，如 com.xnx3
      * @return 类的List集合
@@ -173,11 +173,10 @@ public class ScanClassUtil {
 
     /**
      * 以文件的形式来获取包下的所有Class
-     *
-     * @param packageName
-     * @param packagePath
-     * @param recursive
-     * @param classes
+     * @param packageName 获取的包的名字，比如 com.xnx3
+     * @param packagePath 包的目录
+     * @param recursive  recursive
+     * @param classes classes
      */
     public static void findAndAddClassesInPackageByFile(String packageName, String packagePath, final boolean recursive,
             List<Class<?>> classes) {

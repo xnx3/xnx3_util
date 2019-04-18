@@ -19,7 +19,11 @@ import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
 
 
-
+/**
+ * 图片相关工具类
+ * @author 管雷鸣
+ *
+ */
 public class ImageUtil {
 	
 	/**
@@ -70,7 +74,7 @@ public class ImageUtil {
     
     /**
      * 等比例缩放
-     * <br/>判断图像的宽度，若是宽度大于传入的值，则进行等比例压缩到指定宽高。若是图片小于指定的值，则不处理
+     * <p>判断图像的宽度，若是宽度大于传入的值，则进行等比例压缩到指定宽高。若是图片小于指定的值，则不处理</p>
      * @param inputStream 原图
      * @param maxWidth 缩放后的宽度。若大于这个宽度才会进行等比例缩放。否则不进行处理。传入0则不处理，忽略
      * @param suffix 图片的后缀名，如png、jpg
@@ -99,7 +103,7 @@ public class ImageUtil {
     
     /**
      * 等比例缩放
-     * <br/>判断图像的宽度，若是宽度大于传入的值，则进行等比例压缩到指定宽高。若是图片小于指定的值，则不处理
+     * <p>判断图像的宽度，若是宽度大于传入的值，则进行等比例压缩到指定宽高。若是图片小于指定的值，则不处理</p>
      * @param bufferedImage 原图
      * @param maxWidth 缩放后的宽度。若大于这个宽度才会进行等比例缩放。否则不进行处理
      * @return 处理好的
@@ -133,6 +137,8 @@ public class ImageUtil {
    
     /**
      * 通过一个图片所在的URL超链接，读取图片的 BufferedImage
+     * @param imageUrl 图片的URL超链接地址，如 http://www.leimingyun.com/a.jpg
+     * @return 将imageUrl的图片转化为 {@link BufferedImage}
      */
     public static BufferedImage getBufferedImageByUrl(String imageUrl){
 		URL url = null;
@@ -152,8 +158,8 @@ public class ImageUtil {
     
     /**
      * 将 {@link InputStream} 转化为 {@link BufferedImage}
-     * @param is {@link InputStream}
-     * @return {@link BufferedImage}
+     * @param is 目标图片的{@link InputStream}
+     * @return 转换为的{@link BufferedImage}
      */
     public static BufferedImage inputStreamToBufferedImage(InputStream is){
     	if(is == null){
@@ -169,8 +175,8 @@ public class ImageUtil {
     
     /**
      * 将 {@link InputStream} 转换为 {@link Byte}[]
-     * @param is  {@link InputStream} 
-     * @return {@link Byte}[]
+     * @param is  目标图片的{@link InputStream} 
+     * @return 转换好的{@link Byte}[]
      */
     public static byte[] inputStreamToByte(InputStream is)  {  
     	if(is == null){
@@ -195,7 +201,6 @@ public class ImageUtil {
      * 获取图片的类型。如果是 gif、jpg、png、bmp 以外的类型则返回null。 
      * @param imageBytes 图片字节数组。 
      * @return 图片类型。 
-     * @throws java.io.IOException IO异常。 
      */  
     public static String getImageType(byte[] imageBytes) {  
     	if(imageBytes == null){
@@ -230,7 +235,7 @@ public class ImageUtil {
      * 将 {@link BufferedImage} 转换为 {@link InputStream}
      * @param bufferedImage 要转换的 {@link BufferedImage} 
      * @param imageFileSuffix 图片的后缀名，如 gif 、png 、 jpg 、 bmp
-     * @return
+     * @return 转换为的。如果本身输入为null，则这里返回的也是null
      */
     public static InputStream bufferedImageToInputStream(BufferedImage bufferedImage, String imageFileSuffix){
     	if(bufferedImage == null){
@@ -306,7 +311,7 @@ public class ImageUtil {
     
     /**
      * 后缀格式转换，读入 png、jpg、gif格式图片的 {@link BufferedImage} ，返回新生成的内存图像，可另行保存为png、jpg、gif等格式
-     * @param bufferedImage
+     * @param bufferedImage 要输入的图片的 {@link BufferedImage}
      * @return 新创建的 {@link BufferedImage}
      */
     public static BufferedImage formatConversion(BufferedImage bufferedImage){
@@ -323,7 +328,7 @@ public class ImageUtil {
      * @param originalImage 原图，大图。比如，可用 {@link ImageUtil#getBufferedImageByUrl(String)} 获取
      * @param shuiyinImage 水印图，小图，要水印到大图的水印图。
      * @param startX 水印开始地点，原图的左上角，X坐标
-     * @param startY水印开始地点，原图的左上角，Y坐标
+     * @param startY 水印开始地点，原图的左上角，Y坐标
      * @param width	宽度的像素点，会将整个图片压缩或放大整个图水印上。
      * @param height 高度的像素点
      * @return 已经水印好的图片的 {@link BufferedImage} 对象
@@ -334,10 +339,5 @@ public class ImageUtil {
     	
     	return originalImage;
     }
-    
-    public static void main(String[] args) throws IOException {
-    	
-	}
-    
 	
 }

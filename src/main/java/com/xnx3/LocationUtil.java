@@ -13,11 +13,11 @@ public class LocationUtil {
     
     /**   
      * 通过经纬度获取距离(单位：米)   
-     * @param lat1
-     * @param lng1   
-     * @param lat2   
-     * @param lng2   
-     * @return 米
+     * @param lat1 坐标点1的纬度latitude
+     * @param lng1 坐标点1的经度longitude
+     * @param lat2 坐标点2的纬度latitude
+     * @param lng2 坐标点2的经度longitude
+     * @return 两者相差多少米
      */
     public static double distance(double lat1, double lng1, double lat2,double lng2) {    
         double radLat1 = rad(lat1);    

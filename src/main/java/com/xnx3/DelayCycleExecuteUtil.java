@@ -5,7 +5,7 @@ import com.xnx3.interfaces.DelayCycleExecute;
 
 /**
  * 延迟循环执行。可指定每次循环的等待时间
- * <br/>类似于支付宝、微信支付，支付成功后的对方服务器异步回调，指定时间执行
+ * <p>类似于支付宝、微信支付，支付成功后的对方服务器异步回调，指定时间执行</p>
  * @author 管雷鸣
  */
 public class DelayCycleExecuteUtil extends Thread {
@@ -27,16 +27,16 @@ public class DelayCycleExecuteUtil extends Thread {
 	
 	/**
 	 * 设置每次执行的延迟时间，单位：毫秒。
-	 * <br/>如果执行 {@link DelayCycleExecute#executeProcedures(int)} 失败，则延迟指定时间后，继续执行。直到成功为止，才退出循环
-	 * <br/><br/>如设定数组为：new int[]{0,2000,6000,20000}
-	 * <br/>则第一次执行时，立即执行，不延迟；
-	 * <br/>若失败，则延迟2秒后再次执行；
-	 * <br/>若还失败，则延迟6秒后再次执行；
-	 * <br/>（若成功，退出循环，不再向下执行。同时运行 {@link DelayCycleExecute#success()} 方法）
-	 * <br/>若还失败，则延迟20秒后再次执行；
-	 * <br/>若还失败，此此时数组已到末尾，结束线程。同时会运行 {@link DelayCycleExecute#failure()} 方法
-	 * <br/><br/>若不设置，默认为：
-	 * <br/>new int[]{0,3000,10000,60000,600000,6000000}
+	 * <p>如果执行 {@link DelayCycleExecute#executeProcedures(int)} 失败，则延迟指定时间后，继续执行。直到成功为止，才退出循环</p>
+	 * <p>如设定数组为：new int[]{0,2000,6000,20000}</p>
+	 * <p>则第一次执行时，立即执行，不延迟；</p>
+	 * <p>若失败，则延迟2秒后再次执行；</p>
+	 * <p>若还失败，则延迟6秒后再次执行；</p>
+	 * <p>（若成功，退出循环，不再向下执行。同时运行 {@link DelayCycleExecute#success()} 方法）</p>
+	 * <p>若还失败，则延迟20秒后再次执行；</p>
+	 * <p>若还失败，此此时数组已到末尾，结束线程。同时会运行 {@link DelayCycleExecute#failure()} 方法</p>
+	 * <p>若不设置，默认为：</p>
+	 * <p>new int[]{0,3000,10000,60000,600000,6000000}</p>
 	 * @param sleepArray 设定的延迟数组。
 	 */
 	public void setSleepArray(int[] sleepArray){

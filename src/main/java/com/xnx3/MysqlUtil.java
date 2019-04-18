@@ -25,7 +25,7 @@ public class MysqlUtil {
 	
 	/**
 	 * 设置数据库连接。只设置一次即可
-	 * @param url 如： "jdbc:mysql://localhost:3306/dashixiong?useUnicode=true&characterEncoding=utf-8"
+	 * @param url 如： "jdbc:mysql://localhost:3306/dashixiong?useUnicode=true&amp;characterEncoding=utf-8"
 	 * @param username 数据库登陆用户名
 	 * @param password 数据库登陆的密码
 	 */
@@ -69,15 +69,15 @@ public class MysqlUtil {
 	/**
 	 * 插入语句 。 使用示例：
 	 * <pre>
-	 * 		Map<String, String> map = new HashMap<String, String>();
+	 * 		Map&lt;String, String&gt; map = new HashMap&lt;String, String&gt;();
 	 *		map.put("name", "管雷鸣");
 	 *		map.put("age", "27");
 	 *		MysqlUtil.insert("user", map);
 	 * </pre>
 	 * @param tableName 要插入的数据表的表名
 	 * @param map 要插入的数据。
-	 * 		<br/>&nbsp;&nbsp;&nbsp;&nbsp; key: 列名，   value:值
-	 * 		<br/>&nbsp;&nbsp;&nbsp;&nbsp;使用如：  map.put("username", "管雷鸣");
+	 * 		<p>&nbsp;&nbsp;&nbsp;&nbsp; key: 列名，   value:值</p>
+	 * 		<p>&nbsp;&nbsp;&nbsp;&nbsp;使用如：  map.put("username", "管雷鸣");</p>
 	 * @return  java.sql.PreparedStatement.executeUpdate() 的执行返回值
 	 */
 	public int insert(String tableName, Map<String, String> map) {
@@ -139,9 +139,9 @@ public class MysqlUtil {
 	/**
 	 * 执行 SELECT 语句，将每条结果封装为Map，以List方式将查询到的所有结果返回 。 使用示例：
 	 * <pre>
-	 * 		List<Map<String,Object>> list = select("SELECT * FROM user LIMIT 2,6");
+	 * 		List&lt;Map&lt;String,Object&gt;&gt; list = select("SELECT * FROM user LIMIT 2,6");
 	 * </pre>
-	 * @param sql 查询语句，如 SELECT * FROM user WHERE userid > 10 ORDER BY id DESC LIMIT 2,6
+	 * @param sql 查询语句，如 SELECT * FROM user WHERE userid &gt; 10 ORDER BY id DESC LIMIT 2,6
 	 * @return 查询结果。可使用 list.get(0).get("列名")   获取某一行中，某列名的值
 	 */
 	public List<Map<String,Object>> select(String sql){
@@ -213,20 +213,19 @@ public class MysqlUtil {
 	    return i;
 	}
 	
-	public int delete(String name) {
-	    Connection conn = getConn();
-	    int i = 0;
-	    String sql = "delete from students where Name='" + name + "'";
-	    PreparedStatement pstmt;
-	    try {
-	        pstmt = (PreparedStatement) conn.prepareStatement(sql);
-	        i = pstmt.executeUpdate();
-	        pstmt.close();
-//	        conn.close();
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	    return i;
-	}
-	
+//	public int delete(String name) {
+//	    Connection conn = getConn();
+//	    int i = 0;
+//	    String sql = "delete from students where Name='" + name + "'";
+//	    PreparedStatement pstmt;
+//	    try {
+//	        pstmt = (PreparedStatement) conn.prepareStatement(sql);
+//	        i = pstmt.executeUpdate();
+//	        pstmt.close();
+//	    } catch (SQLException e) {
+//	        e.printStackTrace();
+//	    }
+//	    return i;
+//	}
+//	
 }

@@ -66,6 +66,9 @@ public class Lang {
 	
 	/**
 	 * 字符型转换为整数型
+	 * @param param 要转换的字符串
+	 * @param defaultValue 转换出错异常时返回的值
+	 * @return 转换后的int
 	 * @see Lang#stringToInt(String, int)
 	 * @deprecated
 	 */
@@ -123,6 +126,10 @@ public class Lang {
 	
 	/**
 	 * 字符串转换为各个进制的整数型
+	 * @param param 要转换的字符串
+	 * @param defaultValue 异常后的返回值
+	 * @param radix 进制。16进制转换则为16
+	 * @return 转换为的整数
 	 * @see Lang#stringToInt(String, int, int)
 	 * @deprecated
 	 */
@@ -155,7 +162,10 @@ public class Lang {
 	
 	/**
 	 * 字符型转换为Float型
+	 * @param param 要转换的字符串
+	 * @param defaultValue 默认值，如果转换出错，则返回此
 	 * @see Lang#stringToFloat(String, float)
+	 * @return 转化为的float格式
 	 * @deprecated
 	 */
 	public static float Float_(String param,float defaultValue){
@@ -175,9 +185,9 @@ public class Lang {
 
     /**
      * 将输入流转为字节数组
-     * @param inStream
-     * @return byte[]
-     * @throws Exception
+     * @param inStream 输入流
+     * @return byte[] 转化为的字节数组
+     * @throws Exception 异常
      */ 
     public static byte[] streamToByte(InputStream inStream)throws Exception{ 
         ByteArrayOutputStream outSteam = new ByteArrayOutputStream(); 
@@ -193,9 +203,9 @@ public class Lang {
     
     /**
      * 将输入流转为字符串
-     * @param inStream
-     * @return String
-     * @throws Exception
+     * @param inStream 输入流
+     * @return 转成的UTF8格式字符串
+     * @throws Exception 异常
      */ 
     public static String streamToString(InputStream inStream)throws Exception{ 
         ByteArrayOutputStream outSteam = new ByteArrayOutputStream(); 
@@ -212,41 +222,20 @@ public class Lang {
 
     /**
      * UTF-8格式汉字转换为%E4%BD%A0形式
-     * <br/>以废弃，使用 StringUtil.stringToUrl
-     * @param content
-     * @return String
+     * <p>以废弃，使用 StringUtil.stringToUrl</p>
+     * @param content 传入的字符串
+     * @return 返回URL格式字符串
      * @deprecated 
      */
     public static String stringToUrl(String content) {
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < content.length(); i++) {
-            char c = content.charAt(i);
-            if (c >= 0 && c <= 255) {
-                sb.append(c);
-            } else {
-                byte[] b;
-                try {
-                    b = String.valueOf(c).getBytes("utf-8");
-                } catch (Exception ex) {
-                    System.out.println(ex);
-                    b = new byte[0];
-                }
-                for (int j = 0; j < b.length; j++) {
-                    int k = b[j];
-                    if (k < 0)
-                        k += 256;
-                    sb.append("%" + Integer.toHexString(k).toUpperCase());
-                }
-            }
-        }
-        return sb.toString();
+        return StringUtil.stringToUrl(content);
     }
 
     /**
      * 将%E4%BD%A0转换为UTF-8格式汉字
-     * <br/>以废弃，使用  StringUtil
-     * @param content
-     * @return String
+     * <p>以废弃，使用  StringUtil</p>
+     * @param content 要转换的字符串
+     * @return 转换好的utf8格式汉字
      * @deprecated
      */
     public static String urlToString(String content) {
@@ -302,9 +291,9 @@ public class Lang {
 	
 	/**
 	 * 弹出提示框，
+	 * <p>此已废弃，请使用 请引入 xnx3-swing 包，使用 com.xnx3.swing.message.showMessageDialog(String)  </p>
 	 * @param message 要显示的信息
 	 * &lt;br/&gt;为换行
-	 * @see UI#showMessageDialog(String)
 	 * @deprecated
 	 */
 	public static void showMessageDialog(String message){
@@ -314,9 +303,9 @@ public class Lang {
 	/**
 	 * 弹出选择、确认框 
 	 * &lt;br/&gt;表示换行
+	 * <p>此已废弃，请使用 请引入 xnx3-swing 包，使用 com.xnx3.swing.message.showConfirmDialog(String)  </p>
 	 * @param message 要显示的信息
 	 * @return int {@link Lang#CONFIRM_YES} {@link Lang#CONFIRM_NO} {@link Lang#CONFIRM_CENCEL}
-	 * @see UI#showConfirmDialog(String)
 	 * @deprecated
 	 */
 	public static int showConfirmDialog(String message){
@@ -394,19 +383,25 @@ public class Lang {
     
 	/**
 	 * 从给定的字符串中截取想要的指定字符
-	 * <br/><b>注意，请使用 StringUtil.subString  </b>
+	 * <p><b>注意，请使用 StringUtil.subString  </b></p>
 	 * @param sourceString 源字符串，要切割的字符串
 	 * @param startString 匹配的开始点字符
-	 * 				<li>若为null或者""表示从头开始匹配
-	 * 				<li>若是没找到开始点字符串，默认为从最开始匹配
+	 * 			<ul>
+	 * 				<li>若为null或者""表示从头开始匹配</li>
+	 * 				<li>若是没找到开始点字符串，默认为从最开始匹配</li>
+	 * 			</ul>
 	 * @param endString 匹配的结束点字符
-	 * 				<li>若为null或者""表示匹配到末尾
-	 * 				<li>若是没找到结束点字符串，默认为匹配到最末尾
+	 * 			<ul>
+	 * 				<li>若为null或者""表示匹配到末尾</li>
+	 * 				<li>若是没找到结束点字符串，默认为匹配到最末尾</li>
+	 * 			</ul>
 	 * @param matchType 此项是针对结尾的匹配,可传入：
-	 * 				<li>1:开始匹配找到的第一个，结束匹配找到的最后一个。
-	 * 				<li>2:开始匹配找到的第一个，结束匹配：找到的开始位置往后的第一个。
-	 * 				<li>3.开始匹配找到的最后一个，结束匹配找到的最后一个。
-	 * 				<li>4:开始匹配找到的最后一个，结束匹配：找到的开始位置往后的第一个。
+	 * 			<ul>
+	 * 				<li>1:开始匹配找到的第一个，结束匹配找到的最后一个。</li>
+	 * 				<li>2:开始匹配找到的第一个，结束匹配：找到的开始位置往后的第一个。</li>
+	 * 				<li>3.开始匹配找到的最后一个，结束匹配找到的最后一个。</li>
+	 * 				<li>4:开始匹配找到的最后一个，结束匹配：找到的开始位置往后的第一个。</li>
+	 * 			</ul>
 	 * @return 截取的字符串,若是传入了但是没找到开始或者结束字符则返回null
 	 * @deprecated
 	 */
@@ -417,15 +412,19 @@ public class Lang {
 
 	/**
 	 * 从给定的字符串中截取想要的指定字符。
-	 * 		<li>注意：开始跟结束的两个字符串必须是这段字符中是唯一存在的(此为匹配开始字符串第一个到结束字符串最后一个)
-	 * <br/><b>注意，请使用 StringUtil.subString  </b>
+	 * 		<p>注意：开始跟结束的两个字符串必须是这段字符中是唯一存在的(此为匹配开始字符串第一个到结束字符串最后一个)</p>
+	 * 		<p><b>注意，请使用 StringUtil.subString  </b></p>
 	 * @param sourceString 源字符串，要切割的字符串 
 	 * @param startString 匹配的开始点字符
-	 * 				<li>若为null或者""表示从头开始匹配
-	 * 				<li>若是没找到开始点字符串，默认为从最开始匹配
+	 * 			<ul>
+	 * 				<li>若为null或者""表示从头开始匹配</li>
+	 * 				<li>若是没找到开始点字符串，默认为从最开始匹配</li>
+	 * 			</ul>
 	 * @param endString 匹配的结束点字符
-	 * 				<li>若为null或者""表示匹配到末尾
-	 * 				<li>若是没找到结束点字符串，默认为匹配到最末尾
+	 * 			<ul>
+	 * 				<li>若为null或者""表示匹配到末尾</li>
+	 * 				<li>若是没找到结束点字符串，默认为匹配到最末尾</li>
+	 * 			</ul>
 	 * @see Lang#subString(String, String, String, int)
 	 * @return 截取的字符串,若是传入了但是没找到开始或者结束字符则返回null
 	 * @deprecated
@@ -484,7 +483,7 @@ public class Lang {
 	
 	/**
 	 * 传入字节数剧，返回大小的描述信息，小数点后保留两位。
-	 * <li>如传入：1234435742，返回：1.15 GB
+	 * <p>如传入：1234435742，返回：1.15 GB</p>
 	 * @param size 传入字节
 	 * @return 如:1.15 GB
 	 */

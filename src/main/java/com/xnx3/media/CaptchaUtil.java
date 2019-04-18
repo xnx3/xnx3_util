@@ -142,7 +142,7 @@ public class CaptchaUtil {
 	
 	/**
 	 * 获取验证码图片的背景颜色
-	 * @return Color
+	 * @return {@link Color}背景颜色
 	 */
 	public Color getBackgroundColor() {
 		return backgroundColor;
@@ -150,8 +150,8 @@ public class CaptchaUtil {
 	
 	/**
 	 * 设置验证码图片的背景颜色
-	 * <br/>不设置默认为白色 {@link Color#WHITE}
-	 * @param backgroundColor
+	 * <p>不设置默认为白色 {@link Color#WHITE}</p>
+	 * @param backgroundColor 要设置的背景颜色
 	 */
 	public void setBackgroundColor(Color backgroundColor) {
 		this.backgroundColor = backgroundColor;
@@ -170,6 +170,7 @@ public class CaptchaUtil {
 	
 	/**
 	 * 创建（生成）验证码图片
+	 * @return 生成的验证码
 	 */
 	public BufferedImage createImage(){
 		//定义图像buffer
@@ -214,14 +215,14 @@ public class CaptchaUtil {
 		}
 		return bufferedImage;
 	}
-	
-	public static void main(String[] args) {
-		CaptchaUtil cap = new CaptchaUtil();
-		cap.setCodeCount(4);		//验证码个数为4个字符
-		cap.setBackgroundColor(Color.BLACK); 	//图片背景为黑色
-		BufferedImage bufferedImage = cap.createImage();
-		ImageUtil.saveToLocalhost(bufferedImage, "jpg", "/images/cs.jpg");	//保存到本地，能看到生成的验证码图
-		System.out.println(cap.getCode());	//获取当前验证码
-	}
+//	
+//	public static void main(String[] args) {
+//		CaptchaUtil cap = new CaptchaUtil();
+//		cap.setCodeCount(4);		//验证码个数为4个字符
+//		cap.setBackgroundColor(Color.BLACK); 	//图片背景为黑色
+//		BufferedImage bufferedImage = cap.createImage();
+//		ImageUtil.saveToLocalhost(bufferedImage, "jpg", "/images/cs.jpg");	//保存到本地，能看到生成的验证码图
+//		System.out.println(cap.getCode());	//获取当前验证码
+//	}
 	
 }

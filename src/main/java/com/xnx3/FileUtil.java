@@ -77,7 +77,7 @@ public class FileUtil {
 	
 	/**
 	 * 读文件，返回文件内容
-	 * @param file
+	 * @param file 要读取的文件
 	 * @param encode 编码，如FileUtil.GBK
 	 * @return String 读取的文件文本信息
 	 */
@@ -101,7 +101,7 @@ public class FileUtil {
 	 * 写文件
 	 * @param path 传入要保存至的路径————如D:\\a.txt
 	 * @param xnx3_content 传入要保存的内容
-	 * @return 成功|失败
+	 * @return 成功true；失败false
 	 */
 	public static boolean write(String path,String xnx3_content){
 		try {
@@ -122,10 +122,11 @@ public class FileUtil {
 	 * @param path 传入要保存至的路径————如D:\\a.txt
 	 * @param xnx3_content 传入要保存的内容
 	 * @param encode 写出文件的编码
-	 * 				<li>{@link FileUtil#UTF8}
-	 * 				<li>{@link FileUtil#GBK}
-	 * @return 成功|失败
-	 * @throws IOException 
+	 * 			<ul>	
+	 *				<li>{@link FileUtil#UTF8}</li>
+	 * 				<li>{@link FileUtil#GBK}</li>
+	 * 			</ul>
+	 * @throws IOException  IO异常
 	 */
 	public static void write(String path,String xnx3_content,String encode) throws IOException{
         FileOutputStream fos = new FileOutputStream(path); 
@@ -138,7 +139,7 @@ public class FileUtil {
 	 * 写文件
 	 * @param file 传入要保存至的路径————如D:\\a.txt
 	 * @param xnx3_content 传入要保存的内容
-	 * @return boolean
+	 * @return 成功、失败
 	 */
 	public static boolean write(File file,String xnx3_content){
 		try {
@@ -261,8 +262,7 @@ public class FileUtil {
 	/**
 	 * 通过网址获得文件长度
 	 * @param url 文件的链接地址
-	 * @return 文件长度(Hander里的Content-Length)
-	 * 			<li>失败返回-1
+	 * @return 文件长度(Hander里的Content-Length)。失败返回-1
 	 */
 	public static long getFileSize(String url) {
 		int nFileLength = -1;
@@ -300,14 +300,11 @@ public class FileUtil {
 
 	/**
 	 * 从互联网下载文件。适用于http、https协议
-	 * <li>下载过程会阻塞当前线程
-	 * <li>若文件存在，会先删除存在的文件，再下载
+	 * <p>下载过程会阻塞当前线程</p>
+	 * <p>若文件存在，会先删除存在的文件，再下载</p>
 	 * @param downUrl 下载的目标文件网址 如 "http://www.xnx3.com/down/java/j2se_util.zip"
 	 * @param savePath 下载的文件保存路径。如 "C:\\test\\j2se_util.zip"
-	 * @return 返回下载出现的异常
-	 * 			<li>若返回null，则为下载成功，下载完毕，没有出现异常
-	 * 			<li>若返回具体字符串，则出现了异常，被try捕获到了，返回e.getMessage()异常信息
-	 * @throws IOException 
+	 * @throws IOException IO异常
 	 */
 	public static void downFile(String downUrl,String savePath) throws IOException{
 		downFile(downUrl, savePath, null);
@@ -316,19 +313,16 @@ public class FileUtil {
 
 	/**
 	 * 从互联网下载文件。适用于http、https协议
-	 * <li>下载过程会阻塞当前线程
-	 * <li>若文件存在，会先删除存在的文件，再下载
+	 * <p>下载过程会阻塞当前线程</p>
+	 * <p>若文件存在，会先删除存在的文件，再下载</p>
 	 * @param downUrl 下载的目标文件网址 如 "http://www.xnx3.com/down/java/j2se_util.zip"
 	 * @param savePath 下载的文件保存路径。如 "C:\\test\\j2se_util.zip"
-	 * @param param 包含在请求头中的一些参数。比如 User-Agent 等。若为空，则不传递任何参数。<br/>例如：
+	 * @param param 包含在请求头中的一些参数。比如 User-Agent 等。若为空，则不传递任何参数。例如：
 	 * 			<ul>
 	 * 				<li>key:User-Agent &nbsp;&nbsp;&nbsp;&nbsp; value: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36</li>
 	 * 				<li>key:Host &nbsp;&nbsp;&nbsp;&nbsp; value:xnx3.com</li>
 	 * 			</ul>
-	 * @return 返回下载出现的异常
-	 * 			<li>若返回null，则为下载成功，下载完毕，没有出现异常
-	 * 			<li>若返回具体字符串，则出现了异常，被try捕获到了，返回e.getMessage()异常信息
-	 * @throws IOException 
+	 * @throws IOException IO异常
 	 */
 	public static void downFile(String downUrl,String savePath, Map<String, String> param) throws IOException{
 		//默认超时是30秒
@@ -337,20 +331,17 @@ public class FileUtil {
 	
 	/**
 	 * 从互联网下载文件。适用于http、https协议
-	 * <li>下载过程会阻塞当前线程
-	 * <li>若文件存在，会先删除存在的文件，再下载
+	 * <p>下载过程会阻塞当前线程</p>
+	 * <p>若文件存在，会先删除存在的文件，再下载</p>
 	 * @param downUrl 下载的目标文件网址 如 "http://www.xnx3.com/down/java/j2se_util.zip"
 	 * @param savePath 下载的文件保存路径。如 "C:\\test\\j2se_util.zip"
-	 * @param param 包含在请求头中的一些参数。比如 User-Agent 等。若为空，则不传递任何参数。<br/>例如：
+	 * @param param 包含在请求头中的一些参数。比如 User-Agent 等。若为空，则不传递任何参数。例如：
 	 * 			<ul>
 	 * 				<li>key:User-Agent &nbsp;&nbsp;&nbsp;&nbsp; value: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36</li>
 	 * 				<li>key:Host &nbsp;&nbsp;&nbsp;&nbsp; value:xnx3.com</li>
 	 * 			</ul>
 	 * @param timeout 超时时间，单位毫秒
-	 * @return 返回下载出现的异常
-	 * 			<li>若返回null，则为下载成功，下载完毕，没有出现异常
-	 * 			<li>若返回具体字符串，则出现了异常，被try捕获到了，返回e.getMessage()异常信息
-	 * @throws IOException 
+	 * @throws IOException IO异常
 	 */
 	public static void downFile(String downUrl,String savePath, Map<String, String> param, int timeout) throws IOException{
 		//判断文件是否已存在，若存在，则先删除
@@ -453,7 +444,7 @@ public class FileUtil {
 	
 	/**
 	 * 将 {@link BufferedReader} 转换为 {@link String}
-	 * @param br {@link BufferedReader}
+	 * @param br 传入{@link BufferedReader}
 	 * @return String 若失败，返回 ""
 	 */
 	public static String bufferedReaderToString(BufferedReader br) {
@@ -472,7 +463,9 @@ public class FileUtil {
 	
 	/**
 	 * 将 {@link InputStream} 转化为 byte[]
-	 * @throws IOException
+	 * @param input 传入的 {@link InputStream}
+	 * @return 转化为的结果
+	 * @throws IOException IO异常
 	 */
 	public static byte[] inputstreamToByte(InputStream input) throws IOException {
 	    ByteArrayOutputStream output = new ByteArrayOutputStream();
