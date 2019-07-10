@@ -1,7 +1,18 @@
-# xnx3_util
-A collection of common Java tools
+# xnx3-util
+Java常用工具整理，用到哪个功能，一行引入。
+[网市场云建站系统](https://gitee.com/mail_osc/wangmarket) 所使用的工具包整理
 
-# explain
+# 使用
+Maven中加入
+````
+<dependency>
+ 	<groupId>com.xnx3.util</groupId>
+	<artifactId>xnx3-util</artifactId>
+	<version>1.0.0</version>
+</dependency>
+````
+
+# 使用说明
 
 
 <details open>

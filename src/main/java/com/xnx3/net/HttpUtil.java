@@ -317,7 +317,7 @@ public class HttpUtil {
      * @return 响应对象
      * @throws IOException IO异常
      */ 
-    private HttpResponse makeContent(String urlString, HttpURLConnection urlConnection) throws IOException { 
+    public HttpResponse makeContent(String urlString, HttpURLConnection urlConnection) throws IOException { 
     	urlConnection.setConnectTimeout(this.timeout);
     	urlConnection.setReadTimeout(this.timeout);
         HttpResponse httpResponser = new HttpResponse(); 
