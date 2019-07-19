@@ -294,10 +294,14 @@ public class ZipUtil {
         if (entry != null) {
 //            File file = new File(basePath + File.separator + entry.getName());
             File file = new File(basePath + entry.getName());
-            if (file.isDirectory()) {
+//          if (file.isDirectory()) {
+            if(entry.getName().endsWith(File.separator)){	//jdk 8 此方式，file.isDirectory()会误判断
                 // 可能存在空文件夹
-                if (!file.exists())
-                    file.mkdirs();
+                if (!file.exists()){
+//                	file.mkdirs();
+                	new File(basePath + entry.getName()).mkdirs();
+                }
+                
                 unzip(zis, basePath);
             } else {
                 File parentFile = file.getParentFile();
@@ -316,5 +320,5 @@ public class ZipUtil {
             }
         }
     }
-        
+    
 }
