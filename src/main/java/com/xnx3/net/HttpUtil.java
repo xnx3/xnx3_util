@@ -372,7 +372,8 @@ public class HttpUtil {
             httpResponser.readTimeout = urlConnection.getReadTimeout(); 
             httpResponser.headerFields = urlConnection.getHeaderFields();
         } catch (IOException e) { 
-        	httpResponser.code = 404;
+        	httpResponser.code = 0;
+        	httpResponser.message = e.getMessage();
         } finally { 
             if (urlConnection != null) 
                 urlConnection.disconnect(); 

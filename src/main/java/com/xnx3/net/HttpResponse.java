@@ -10,26 +10,26 @@ import java.util.Vector;
  */
 public class HttpResponse {
  
-	String urlString;
-	int defaultPort;
-	String file;
-	String host;
-	String path;
-	int port;
-	String protocol;
-	String query;
-	String ref;
-	String userInfo;
-	String contentEncoding;
-	String content;
-	String contentType;
-	int code;
-	String message;
-	String method;
-	int connectTimeout;
-	int readTimeout;
-	String cookie;
-	Map<String, List<String>> headerFields;
+	public String urlString;
+	public int defaultPort;
+	public String file;
+	public String host;
+	public String path;
+	public int port;
+	public String protocol;
+	public String query;
+	public String ref;
+	public String userInfo;
+	public String contentEncoding;
+	public String content;
+	public String contentType;
+	public int code;
+	public String message;
+	public String method;
+	public int connectTimeout;
+	public int readTimeout;
+	public String cookie;
+	public Map<String, List<String>> headerFields;
  
 	Vector<String> contentCollection;
  

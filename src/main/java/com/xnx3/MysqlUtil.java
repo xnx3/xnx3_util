@@ -21,7 +21,11 @@ public class MysqlUtil {
 	public String url = "jdbc:mysql://localhost:3306/dashixiong?useUnicode=true&characterEncoding=utf-8";
 	public String username = "root";
 	public String password = "";
+	
 	public Connection conn = null;
+	private static int intervalTime = 60 * 30;	//30分钟更新一次conn
+	private boolean updateConn = false;	//是否需要检查更新 conn，这个是多线程控制的，每间隔30分钟就要重新检测一次，如果为true，就要检测 lastUpdateConnTime 时间是否应该更新了
+	private int lastUpdateConnTime = 0;	//最后一次更新conn的时间 
 	
 	/**
 	 * 设置数据库连接。只设置一次即可
@@ -33,7 +37,23 @@ public class MysqlUtil {
 		this.url = url;
 		this.username = username;
 		this.password = password;
+		
+		//线程标注，定期刷新conn，避免超过8小时连接中断
+		new Thread(new Runnable() {
+			public void run() {
+				while (true) {
+					try {
+						Thread.sleep(intervalTime * 1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					
+					updateConn = true;
+				}
+			}
+		}).start();
 	}
+	
 	
 	public static void main(String[] args) {
 		MysqlUtil mysql = new MysqlUtil("jdbc:mysql://localhost:3306/dashixiong?useUnicode=true&characterEncoding=utf-8", "root", "");
@@ -53,6 +73,20 @@ public class MysqlUtil {
 	}
 	
 	public Connection getConn() {
+		if(updateConn = true){
+			int currentTime = DateUtil.timeForUnix10();
+			if(lastUpdateConnTime + intervalTime < currentTime){
+				//要更新 conn
+				try {
+					conn.close();
+					conn = null;
+					lastUpdateConnTime = currentTime;
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
 		if(conn == null){
 			try {
 				Class.forName(driver); //classLoader,加载对应驱动
