@@ -46,9 +46,7 @@ public class ImageUtil {
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
 				if(ColorUtil.intToHex(newImage.getRGB(x, y)).equals(oldHex)){
-					System.out.println("-->"+newImage.getRGB(x, y));
 					newImage.setRGB(x, y, newC);
-					System.out.println(x+","+y);
 				}
 			}
 		}
