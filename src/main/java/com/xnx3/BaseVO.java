@@ -7,7 +7,7 @@ package com.xnx3;
  * @author 管雷鸣
  *
  */
-public class BaseVO {
+public class BaseVO implements java.io.Serializable{
 	public final static int SUCCESS=1;
 	public final static int FAILURE=0;
 	
@@ -101,6 +101,11 @@ public class BaseVO {
 		BaseVO vo = new BaseVO();
 		vo.setBaseVO(BaseVO.FAILURE, info);
 		return vo;
+	}
+
+	@Override
+	public String toString() {
+		return "BaseVO [result=" + result + ", info=" + info + "]";
 	}
 	
 }
