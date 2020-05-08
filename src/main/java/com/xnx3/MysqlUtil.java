@@ -77,13 +77,9 @@ public class MysqlUtil {
 			int currentTime = DateUtil.timeForUnix10();
 			if(lastUpdateConnTime + intervalTime < currentTime){
 				//要更新 conn
-				try {
-					conn.close();
-					conn = null;
-					lastUpdateConnTime = currentTime;
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+				closeConnect();
+				conn = null;
+				lastUpdateConnTime = currentTime;
 			}
 		}
 		
