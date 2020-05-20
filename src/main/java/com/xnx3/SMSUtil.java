@@ -37,10 +37,10 @@ public class SMSUtil implements java.io.Serializable{
 	}
 	
 	public static void main(String[] args) {
-		SMSUtil util = new SMSUtil(112354, "9i930!!8");
-		BaseVO vo = util.send("17076012262", "哈哈哈哈哈");
-//		BaseVO vo = util.getBalance();
-		System.out.println(vo);
+		SMSUtil util = new SMSUtil(112345, "password");
+		BaseVO vo1 = util.send("17076000000", "哈哈哈哈哈测试专用");
+		BaseVO vo2 = util.getBalance();
+		System.out.println(vo1);
 	}
 	
 	/**
