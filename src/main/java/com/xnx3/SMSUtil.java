@@ -7,8 +7,12 @@ import com.xnx3.net.HttpsUtil;
 
 /**
  * 短信发送。
- * <br/>短信开通及使用，联系 www.leimingyun.com
- * <br/>整个短信内容（包含签名的字符）不要超过70个字符，不然会记为发送多条短信。以70个字符为一条短信计费
+ * <p>短信开通及使用，联系 www.leimingyun.com</p>
+ * <p>整个短信内容（包含签名的字符）不要超过70个字符，不然会记为发送多条短信。以70个字符为一条短信计费</p>
+ * <p>发送短信如：</p>
+ * <pre>
+ * 		new SMSUtil(112345, "password").send("17076000000", "哈哈哈哈哈测试专用");
+ * </pre>
  * @author 管雷鸣
  *
  */
@@ -27,7 +31,7 @@ public class SMSUtil implements java.io.Serializable{
 	
 	/**
 	 * 短信发送。
-	 * <br/>短信开通及使用，联系 www.leimingyun.com
+	 * <p>短信开通及使用，联系 www.leimingyun.com</p>
 	 * @param uid 用户在短信平台的uid（登录用户名）
 	 * @param password 用户在短信平台登录的密码
 	 */
@@ -35,14 +39,7 @@ public class SMSUtil implements java.io.Serializable{
 		this.uid = uid;
 		this.password = MD5Util.MD5(password);
 	}
-	
-	public static void main(String[] args) {
-		SMSUtil util = new SMSUtil(112345, "password");
-		BaseVO vo1 = util.send("17076000000", "哈哈哈哈哈测试专用");
-		BaseVO vo2 = util.getBalance();
-		System.out.println(vo1);
-	}
-	
+
 	/**
 	 * 发送一条短信。短信内容自己定，不过前缀会加上签名。
 	 * @param phone 接收短信的手机号

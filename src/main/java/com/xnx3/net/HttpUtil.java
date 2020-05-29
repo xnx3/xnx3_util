@@ -313,6 +313,7 @@ public class HttpUtil {
     
     /**
      * 得到响应对象
+     * @param urlString 请求的url地址，如 http://xxx.com/a.jsp
      * @param urlConnection {@link HttpURLConnection}
      * @return 响应对象
      * @throws IOException IO异常

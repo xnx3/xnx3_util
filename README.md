@@ -8,7 +8,7 @@ Maven中加入
 <dependency>
  	<groupId>com.xnx3.util</groupId>
 	<artifactId>xnx3-util</artifactId>
-	<version>1.1.1</version>
+	<version>1.1.2</version>
 </dependency>
 ````
 
