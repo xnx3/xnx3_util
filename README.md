@@ -1,8 +1,10 @@
 # xnx3-util
-Java常用工具整理，用到哪个功能，一行引入。
+Java常用工具整理，用到哪个功能，一行引入使用。
 [网市场云建站系统](https://gitee.com/mail_osc/wangmarket) 所使用的工具包整理
 
 # 使用
+不依赖其他任何第三方jar。
+需要Java版本：8
 Maven中加入
 ````
 <dependency>
@@ -12,7 +14,13 @@ Maven中加入
 </dependency>
 ````
 
-# 使用说明
+# 代码使用示例
+### 发短信
+````
+//SMSUtil只需创建一次，即可多次调用发送短信。短信接口开通：  sms.leimingyun.com
+com.xnx3.SMSUtil util = new com.xnx3.SMSUtil(uid, password);
+util.send(phone, "我是短信发送的内容");
+````
 
 
 <details open>

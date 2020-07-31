@@ -19,11 +19,16 @@ import java.util.regex.Pattern;
  */
 public class StringUtil {
 	private static final String X36 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	/**
+	 * 62进制， 0~9 + A~Z + a~z
+	 */
+	private static final String X62 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     
 	/**
 	 * 0-9 、 a-z 一共36个字符
 	 */
 	public static final char[] AZ09CHAR_36 = {'0','1','2','3','4','5','6','7','8','9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+	public static final char[] AZ09CHAR_62 = {'0','1','2','3','4','5','6','7','8','9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 	
     /**
      * 26个字母
@@ -184,7 +189,7 @@ public class StringUtil {
 	
 
 	/**
-	 * 将 十进制 的int数，转化为 0-9 + a-z 的36进制字符串，从而所见其长度
+	 * 将 十进制 的int数，转化为 0-9 、大写 A-Z 的36进制字符串，从而缩减其长度
 	 * @param num 要转换的十进制数
 	 * @return 转换好的36进制字符串
 	 */
@@ -196,6 +201,23 @@ public class StringUtil {
         while(num > 0) {
             sBuffer.append(AZ09CHAR_36[num % 36]);
             num = num / 36;
+        }
+        return sBuffer.reverse().toString();
+    }
+	
+	/**
+	 * 将 十进制 的int数，转化为 0-9 、大写 A-Z 、小写 a-z 的62进制字符串，从而缩减其长度
+	 * @param num 要转换的十进制数
+	 * @return 转换好的62进制字符串
+	 */
+	public static String intTo62(int num) {
+        StringBuffer sBuffer = new StringBuffer();
+        if(num == 0) {
+            sBuffer.append("0");
+        }
+        while(num > 0) {
+            sBuffer.append(AZ09CHAR_62[num % 62]);
+            num = num / 62;
         }
         return sBuffer.reverse().toString();
     }
@@ -949,6 +971,9 @@ public class StringUtil {
 	
 	
 	public static void main(String[] args) {
-		System.out.println(filterXss("HJW-822喷水织机"));
+		System.out.println(AZ09CHAR_36.length);
+		System.out.println(intTo62(100));
+		System.out.println(intTo36(100000));
+		System.out.println(_36ToInt("255s"));
 	}
 }

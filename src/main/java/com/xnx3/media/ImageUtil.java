@@ -18,6 +18,9 @@ import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
 
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
+
 
 /**
  * 图片相关工具类
@@ -338,4 +341,47 @@ public class ImageUtil {
     	return originalImage;
     }
 	
+    /**
+     * 将 {@link BufferedImage} 转为 Base64 字符串形式返回
+     * @param bufferedImage {@link BufferedImage}图像
+     * @param suffix 图像的后缀，类型，传入如 jpg、png、gif 等
+     * @return Base64字符串,会自动进行\r\n这种空行替换，去除换行符，变为一行返回。 返回如：
+     * 		<pre>
+     * 			/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD29/8AWN9TRRRWhif/2Q==
+     * 		<pre>
+     */
+    public static String bufferedImageToBase64(BufferedImage bufferedImage ,String suffix){
+    	byte[] data = ImageUtil.bufferedImageToByte(bufferedImage, suffix);
+
+        //对字节数组Base64编码  
+    	BASE64Encoder encoder = new BASE64Encoder();  
+        return encoder.encode(data).replaceAll("\r|\n", "");
+    }
+    
+    /**
+     * 将 Base64 字符串 转为 {@link BufferedImage} 返回
+     * @param base64Str Base64字符串形式，传入如：
+     * 		<pre>
+     * 			/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD29/8AWN9TRRRWhif/2Q==
+     * 		<pre>
+     * @return {@link BufferedImage}图像。注意，如果失败，比如传入的字符串为null，则会返回 null
+     */
+    public static BufferedImage base64TobufferedImage(String base64Str){
+    	if(base64Str == null){
+    		return null;
+    	}
+    	BASE64Decoder decoder = new BASE64Decoder();
+		try {
+			// 解密
+			byte[] b = decoder.decodeBuffer(base64Str);
+			ByteArrayInputStream bais = new ByteArrayInputStream(b);  
+	        BufferedImage bi = ImageIO.read(bais);
+	        return bi;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+    }
+    
+    
 }

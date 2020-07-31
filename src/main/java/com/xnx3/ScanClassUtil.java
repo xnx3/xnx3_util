@@ -23,13 +23,13 @@ public class ScanClassUtil {
 	
 	public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, SecurityException {
      // 包下面的类
-        List<Class<?>> classList = getClasses("com.xnx3.wangmarket");
+        List<Class<?>> classList = getClasses("com.xnx3");
         for (int i = 0; i < classList.size(); i++) {
 			System.out.println(classList.get(i).getName());
 		}
         
         List<Class<?>> c = getClassSearchAnnotationsName(classList, "PluginRegister");
-        System.out.println(c.get(0).getName());
+        System.out.println(c.get(0).getCanonicalName());
 
 	}
 	
@@ -97,6 +97,10 @@ public class ScanClassUtil {
         // 获取包的名字 并进行替换
         String packageName = pack;
         String packageDirName = packageName.replace('.', '/');
+        
+        //也可以用(ClassLoader.getSystemClassLoader())
+        ClassLoader loader = ScanClassUtil.class.getClassLoader();
+        
         // 定义一个枚举的集合 并进行循环来处理这个目录下的things
         Enumeration<URL> dirs;
         try {
@@ -149,9 +153,15 @@ public class ScanClassUtil {
                                         String className = name.substring(packageName.length() + 1, name.length() - 6);
                                         try {
                                             // 添加到classes
-                                        	classList.add(Class.forName(packageName + '.' + className));
+//                                        	Class.forName(packageName + "." + className, false, loader);
+//                                        	classList.add(Class.forName(packageName + "." + className, false, loader));
+                                        	classList.add(loader.loadClass(packageName + "." + className));
                                         } catch (ClassNotFoundException e) {
+                                        	System.out.println(packageName + "." + className +" -- 初始化异常,ClassNotFoundException");
                                             e.printStackTrace();
+                                        } catch(NoClassDefFoundError e1){
+                                        	System.out.println(packageName + "." + className +" -- 初始化异常,NoClassDefFoundError");
+                                        	e1.printStackTrace();
                                         }
                                     }
                                 }
