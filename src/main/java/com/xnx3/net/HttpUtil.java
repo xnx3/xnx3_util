@@ -323,7 +323,19 @@ public class HttpUtil {
     	urlConnection.setReadTimeout(this.timeout);
         HttpResponse httpResponser = new HttpResponse(); 
         try { 
-            InputStream in = urlConnection.getInputStream(); 
+        	InputStream in = null;
+        	try {
+        		in = urlConnection.getInputStream();
+        	} catch (IOException ioe) {
+        	    if (urlConnection instanceof HttpURLConnection) {
+        	        HttpURLConnection httpConn = (HttpURLConnection) urlConnection;
+        	        int statusCode = httpConn.getResponseCode();
+        	        if (statusCode != 200) {
+        	        	in = httpConn.getErrorStream();
+        	        }
+        	    }
+        	}
+            
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in)); 
             httpResponser.contentCollection = new Vector<String>(); 
             StringBuffer temp = new StringBuffer(); 
@@ -372,7 +384,8 @@ public class HttpUtil {
             httpResponser.connectTimeout = urlConnection.getConnectTimeout(); 
             httpResponser.readTimeout = urlConnection.getReadTimeout(); 
             httpResponser.headerFields = urlConnection.getHeaderFields();
-        } catch (IOException e) { 
+        } catch (IOException e) {
+        	e.printStackTrace();
         	httpResponser.code = 0;
         	httpResponser.message = e.getMessage();
         } finally { 
