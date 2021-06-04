@@ -406,11 +406,6 @@ public class FileUtil {
 			}
 	        conn.setSSLSocketFactory(sc.getSocketFactory());
 	        conn.setHostnameVerifier(new TrustAnyHostnameVerifier());
-	        
-	        //文件的长度
-	        int nEndPos = Lang.stringToInt(conn.getHeaderField("Content-Length"), -1);
-
-	        RandomAccessFile oSavedFile = new RandomAccessFile(savePath, "rw");
 	        if(param != null){
 				for (Map.Entry<String, String> entry : param.entrySet()) {
 					conn.setRequestProperty(entry.getKey(), entry.getValue());
@@ -418,10 +413,19 @@ public class FileUtil {
 			}else{
 				conn.setRequestProperty("User-Agent", "Internet Explorer");
 			}
-//	        conn.setRequestProperty("User-Agent", "Internet Explorer");
+	        
+	        //文件的长度
+	        int nEndPos = Lang.stringToInt(conn.getHeaderField("Content-Length"), -1);
+
+	        RandomAccessFile oSavedFile = new RandomAccessFile(savePath, "rw");
+//	        if(param != null){
+//				for (Map.Entry<String, String> entry : param.entrySet()) {
+//					conn.setRequestProperty(entry.getKey(), entry.getValue());
+//				}
+//			}else{
+//				conn.setRequestProperty("User-Agent", "Internet Explorer");
+//			}
 			String sProperty = "bytes=" + nStartPos + "-";
-			// 告诉服务器book.rar这个文件从nStartPos字节开始传
-//			conn.setRequestProperty("RANGE", sProperty);
 			InputStream input = conn.getInputStream();
 			
 			if(nEndPos == -1){

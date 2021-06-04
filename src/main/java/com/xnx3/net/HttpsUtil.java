@@ -188,9 +188,9 @@ public class HttpsUtil {
 		InputStreamReader streamReader = null;
 		
 		try {
-			streamReader = new InputStreamReader(conn.getInputStream(), "UTF-8");
+			streamReader = new InputStreamReader(conn.getInputStream(), encode);
 		} catch (IOException e) {
-			streamReader = new InputStreamReader(conn.getErrorStream(), "UTF-8");
+			streamReader = new InputStreamReader(conn.getErrorStream(), encode);
 		} finally {
 			if (streamReader != null) {
 				bufferedReader = new BufferedReader(streamReader);
@@ -213,7 +213,7 @@ public class HttpsUtil {
      * @return 响应对象
      * @throws IOException
      */ 
-    private HttpResponse makeContent(String urlString, HttpURLConnection urlConnection, String content) throws IOException { 
+    public HttpResponse makeContent(String urlString, HttpURLConnection urlConnection, String content) throws IOException { 
         HttpResponse httpResponser = new HttpResponse(); 
         try { 
             httpResponser.contentCollection = new Vector<String>(); 

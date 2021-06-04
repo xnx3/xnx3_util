@@ -16,6 +16,7 @@ import java.net.URISyntaxException;
  * @author 管雷鸣
  */
 public class SystemUtil {
+	private static String osname = null;	//当前操作系统名字
 	
 	/**
 	 * 调用当前系统的默认浏览器打开网页
@@ -129,6 +130,33 @@ public class SystemUtil {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * 获取当前操作系统名字
+	 * @return 返回如： mac os x
+	 */
+	public static String getOSName(){
+		if(osname == null){
+			osname = System.getProperty("os.name").toLowerCase();
+		}
+		return osname;
+	}
+	
+	/**
+	 * 获取当前系统是否是 windows os
+	 * @return true：是
+	 */
+	public static boolean isWindowsOS(){
+		return getOSName().indexOf("window") > -1;
+	}
+	
+	/**
+	 * 获取当前系统是否是 mac
+	 * @return true：是
+	 */
+	public static boolean isMacOS(){
+		return getOSName().indexOf("mac") > -1;
 	}
 	
 }

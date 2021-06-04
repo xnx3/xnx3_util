@@ -31,7 +31,7 @@ public class HttpResponse {
 	public String cookie;
 	public Map<String, List<String>> headerFields;
  
-	Vector<String> contentCollection;
+	public Vector<String> contentCollection;
  
 	public String getContent() {
 		return content;
